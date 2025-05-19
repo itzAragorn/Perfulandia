@@ -25,10 +25,10 @@ public abstract class Usuario {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
-    @Column(unique=true, nullable=false)
+    @Column(nullable=false)
     private String nombre;
     
-    @Column(nullable=false)
+    @Column(unique=true, nullable=false)
     private String correo;
     
     @Column(nullable=false)

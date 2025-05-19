@@ -1,31 +1,37 @@
 package com.prueba_fs.cl.Prueba_fs.model;
 
+import java.time.LocalDate;
+
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-public class DetalleVenta {
+@Data
+public class Envio {
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
+    @OneToOne
+    @JoinColumn(name = "venta_id", nullable = false)
     private Venta venta;
 
-    @ManyToOne
-    private Producto producto;
+    @Column(nullable = false)
+    private String direccionDestino;
 
-    private int cantidad;
+    @Column(nullable = false)
+    private String estado; 
 
-    private double precioUnitario;
-
+    private LocalDate fechaEnvio;
 }
